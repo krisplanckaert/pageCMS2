@@ -10,7 +10,7 @@ class Admin_IndexController extends Zend_Controller_Action
 
     public function indexAction()
     {
-        die('Ik zit in de admin module');
+        //die('Ik zit in de admin module');
     }
 
 

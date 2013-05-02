@@ -15,9 +15,15 @@ class Application_Model_Producten
      */
     public function addProducts($titel, $omschrijving, $prijs) 
     {
-        return func_get_args();
-        //$product = stdClass();
-        //return $product;
+        $productModel = new Application_Model_Productendb();
+        $params = array(
+            'titel' => $titel,
+            'omschrijving' => $omschrijving,
+            'prijs' => $prijs,
+        );
+        $productId = $productModel->toevoegenProduct($params);
+        $product = $productModel->getOne($productId);
+        return $product;
     }
     
     /**
@@ -27,6 +33,9 @@ class Application_Model_Producten
      */
     public function deleteProducts ($id)
     {
+        $productModel = new Application_Model_Productendb();
+        $productModel->verwijderProduct($id);
+        
         return true;
         
     }
@@ -41,7 +50,13 @@ class Application_Model_Producten
      */
     public function modProducts ($id, $titel, $omschrijving, $prijs)
     {
-        $product = stdClass();
+        $productModel = new Application_Model_Productendb();
+        $params = array(
+            'titel' => $titel,
+            'omschrijving' => $omschrijving,
+            'prijs' => $prijs,
+        );
+        $productModel->wijzigenProduct($params, $id);
         return $product;
     }
 
