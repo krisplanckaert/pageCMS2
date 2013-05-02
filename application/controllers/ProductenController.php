@@ -6,6 +6,8 @@ class ProductenController extends Zend_Controller_Action
     public function init()
     {
         /* Initialize action controller here */
+        ini_set("soap.wsdl_cache_enabled", 0);
+        ini_set("soap.wsdl_cache_ttl", 0);
     }
 
     public function indexAction()
